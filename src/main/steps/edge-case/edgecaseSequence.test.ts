@@ -4,6 +4,7 @@ import {
   CHECK_YOUR_ANSWERS,
   CONTACT_DETAILS,
   CONTACT_PREFERENCES,
+  COOKIES,
   DATE_OF_BIRTH,
   FIND_ADDRESS,
   FULL_NAME,
@@ -40,31 +41,34 @@ describe('Sequence must match respective path', () => {
     expect(edgecaseSequence[5].url).toBe(FIND_ADDRESS);
     expect(edgecaseSequence[5].getNextStep({})).toBe(SELECT_ADDRESS);
 
-    expect(edgecaseSequence[6].url).toBe(MANUAL_ADDRESS);
-    expect(edgecaseSequence[6].getNextStep({})).toBe(CONTACT_PREFERENCES);
+    expect(edgecaseSequence[7].url).toBe(MANUAL_ADDRESS);
+    expect(edgecaseSequence[7].getNextStep({})).toBe(CONTACT_PREFERENCES);
 
-    expect(edgecaseSequence[7].url).toBe(CONTACT_PREFERENCES);
-    expect(edgecaseSequence[7].getNextStep({})).toBe(CONTACT_DETAILS);
+    expect(edgecaseSequence[8].url).toBe(CONTACT_PREFERENCES);
+    expect(edgecaseSequence[8].getNextStep({})).toBe(CONTACT_DETAILS);
 
-    expect(edgecaseSequence[8].url).toBe(CONTACT_DETAILS);
-    expect(edgecaseSequence[8].getNextStep({})).toBe(UPLOAD_YOUR_DOCUMENTS);
+    expect(edgecaseSequence[9].url).toBe(CONTACT_DETAILS);
+    expect(edgecaseSequence[9].getNextStep({})).toBe(UPLOAD_YOUR_DOCUMENTS);
 
-    expect(edgecaseSequence[9].url).toBe(UPLOAD_YOUR_DOCUMENTS);
-    expect(edgecaseSequence[9].getNextStep({})).toBe(ADDITIONAL_DOCUMENTS_UPLOAD);
+    expect(edgecaseSequence[10].url).toBe(UPLOAD_YOUR_DOCUMENTS);
+    expect(edgecaseSequence[10].getNextStep({})).toBe(ADDITIONAL_DOCUMENTS_UPLOAD);
 
-    expect(edgecaseSequence[10].url).toBe(CONTACT_DETAILS);
-    expect(edgecaseSequence[10].url).toBe(CONTACT_DETAILS);
+    expect(edgecaseSequence[11].url).toBe(ADDITIONAL_DOCUMENTS_UPLOAD);
+    expect(edgecaseSequence[11].getNextStep({})).toBe(CHECK_YOUR_ANSWERS);
 
-    expect(edgecaseSequence[11].url).toBe(UPLOAD_YOUR_DOCUMENTS);
-    expect(edgecaseSequence[11].getNextStep({})).toBe(ADDITIONAL_DOCUMENTS_UPLOAD);
+    expect(edgecaseSequence[12].url).toBe(CHECK_YOUR_ANSWERS);
+    expect(edgecaseSequence[12].getNextStep({})).toBe(STATEMENT_OF_TRUTH);
 
-    expect(edgecaseSequence[12].url).toBe(ADDITIONAL_DOCUMENTS_UPLOAD);
-    expect(edgecaseSequence[12].getNextStep({})).toBe(CHECK_YOUR_ANSWERS);
+    expect(edgecaseSequence[13].url).toBe(STATEMENT_OF_TRUTH);
+    expect(edgecaseSequence[13].getNextStep({})).toBe(APPLICATION_SUBMITTED);
 
-    expect(edgecaseSequence[13].url).toBe(CHECK_YOUR_ANSWERS);
-    expect(edgecaseSequence[13].getNextStep({})).toBe(STATEMENT_OF_TRUTH);
+    expect(edgecaseSequence[14].url).toBe(APPLICATION_SUBMITTED);
+    expect(edgecaseSequence[14].getNextStep({})).toBe(SUBJECT_DETAILS);
 
-    expect(edgecaseSequence[14].url).toBe(STATEMENT_OF_TRUTH);
-    expect(edgecaseSequence[14].getNextStep({})).toBe(APPLICATION_SUBMITTED);
+    expect(edgecaseSequence[15].url).toBe(SUBJECT_DETAILS);
+    expect(edgecaseSequence[15].getNextStep({})).toBe(SUBJECT_CONTACT_DETAILS);
+
+    expect(edgecaseSequence[16].url).toBe(COOKIES);
+    expect(edgecaseSequence[16].getNextStep({})).toBe(SUBJECT_DETAILS);
   });
 });

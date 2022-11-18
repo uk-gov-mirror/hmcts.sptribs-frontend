@@ -7,12 +7,12 @@ import {
   CONTACT_PREFERENCES,
   COOKIES,
   DATE_OF_BIRTH,
-  EMAIL_ADDRESS,
   FIND_ADDRESS,
   FULL_NAME,
   MANUAL_ADDRESS,
   SELECT_ADDRESS,
   STATEMENT_OF_TRUTH,
+  SUBJECT_CONTACT_DETAILS,
   SUBJECT_DETAILS,
   UPLOAD_YOUR_DOCUMENTS,
   USER_ROLE,
@@ -22,7 +22,7 @@ export const edgecaseSequence: Step[] = [
   {
     url: SUBJECT_DETAILS,
     showInSection: Sections.AboutEdgeCase,
-    getNextStep: () => USER_ROLE,
+    getNextStep: () => SUBJECT_CONTACT_DETAILS,
   },
   {
     url: USER_ROLE,
@@ -58,12 +58,12 @@ export const edgecaseSequence: Step[] = [
   {
     url: CONTACT_PREFERENCES,
     showInSection: Sections.AboutEdgeCase,
-    getNextStep: () => EMAIL_ADDRESS,
+    getNextStep: () => CONTACT_DETAILS,
   },
   {
-    url: EMAIL_ADDRESS,
+    url: SUBJECT_CONTACT_DETAILS,
     showInSection: Sections.AboutEdgeCase,
-    getNextStep: () => CONTACT_DETAILS,
+    getNextStep: () => USER_ROLE,
   },
   {
     url: CONTACT_DETAILS,
@@ -97,7 +97,7 @@ export const edgecaseSequence: Step[] = [
   },
   {
     url: SUBJECT_DETAILS,
-    getNextStep: () => USER_ROLE,
+    getNextStep: () => SUBJECT_CONTACT_DETAILS,
   },
   {
     url: COOKIES,

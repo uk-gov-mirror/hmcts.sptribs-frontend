@@ -25,6 +25,11 @@ export const edgecaseSequence: Step[] = [
     getNextStep: () => SUBJECT_CONTACT_DETAILS,
   },
   {
+    url: SUBJECT_CONTACT_DETAILS,
+    showInSection: Sections.AboutEdgeCase,
+    getNextStep: () => USER_ROLE,
+  },
+  {
     url: USER_ROLE,
     showInSection: Sections.AboutEdgeCase,
     getNextStep: () => FULL_NAME,
@@ -34,7 +39,6 @@ export const edgecaseSequence: Step[] = [
     showInSection: Sections.AboutEdgeCase,
     getNextStep: () => DATE_OF_BIRTH,
   },
-
   {
     url: DATE_OF_BIRTH,
     showInSection: Sections.AboutEdgeCase,
@@ -59,11 +63,6 @@ export const edgecaseSequence: Step[] = [
     url: CONTACT_PREFERENCES,
     showInSection: Sections.AboutEdgeCase,
     getNextStep: () => CONTACT_DETAILS,
-  },
-  {
-    url: SUBJECT_CONTACT_DETAILS,
-    showInSection: Sections.AboutEdgeCase,
-    getNextStep: () => USER_ROLE,
   },
   {
     url: CONTACT_DETAILS,

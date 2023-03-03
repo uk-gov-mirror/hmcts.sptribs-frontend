@@ -90,19 +90,22 @@ export class CaseApi {
           },
         };
       });
-      const OtherInformation = req.session['otherCaseInformation'].map(document => {
-        const { url, fileName, documentId, binaryUrl } = document;
-        return {
-          id: documentId,
-          value: {
-            documentLink: {
-              document_url: url,
-              document_filename: fileName,
-              document_binary_url: binaryUrl,
+      let OtherInformation;
+      if (req.session['otherCaseInformation']) {
+        OtherInformation = req.session['otherCaseInformation'].map(document => {
+          const { url, fileName, documentId, binaryUrl } = document;
+          return {
+            id: documentId,
+            value: {
+              documentLink: {
+                document_url: url,
+                document_filename: fileName,
+                document_binary_url: binaryUrl,
+              },
             },
-          },
-        };
-      });
+          };
+        });
+      }
 
       const data = {
         ...mapCaseData(req),

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import Axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import config from 'config';
+import { StatusCodes } from 'http-status-codes';
 import { LoggerInstance } from 'winston';
 
 import {
@@ -120,11 +121,14 @@ export class CaseApi {
       if (res.status === 200) {
         return req.session.userCase;
       } else {
-        throw new Error('Error in updating case');
+        throw new CaseUpdateException(
+          'Error in updating case',
+          'request failed in case api with status code' + res.status
+        );
       }
     } catch (err) {
       this.logError(err);
-      throw new Error('Error in updating case');
+      throw new CaseUpdateException('Error in updating case', err);
     }
   }
   /**
@@ -281,3 +285,12 @@ const checkboxConverter = (value: string | undefined) => {
     return YesOrNo.NO;
   }
 };
+
+export class CaseUpdateException extends Error {
+  constructor(public message: string, public stack: string, public status = StatusCodes.INTERNAL_SERVER_ERROR) {
+    super(message);
+    this.name = 'CaseUpdateException';
+    this.status = status;
+    this.stack = stack;
+  }
+}
